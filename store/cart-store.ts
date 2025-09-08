@@ -13,7 +13,7 @@ interface CartStore{
     items: CartItem[];
     addItem: (item: CartItem)=>void;
     removeItem: (id: string)=>void;
-    cleartCart: ()=>void;
+    clearCart: ()=>void;
 }
 
 export const useCartStore = create<CartStore>()(persist((set)=>({
@@ -40,7 +40,7 @@ export const useCartStore = create<CartStore>()(persist((set)=>({
     }
     }),
 
-    cleartCart: ()=> set((state)=>{
+    clearCart: ()=> set((state)=>{
         return {items: []}
     }),
 

@@ -5,7 +5,7 @@ import { useCartStore } from "@/store/cart-store"
 import { checkoutAction } from "./checkout-action"
 
 export default function CheckoutPage(){
-    const {items, addItem, removeItem, cleartCart} = useCartStore()
+    const {items, addItem, removeItem, clearCart} = useCartStore()
     const total = items.reduce((acc, item) => acc + item.price * item.quantity, 0)
     if (total === 0 && items.length === 0){
         return (
@@ -46,7 +46,7 @@ export default function CheckoutPage(){
             </Card>
             <form action={checkoutAction} className="max-w-md mx-auto flex flex-col gap-4">
                 <input type="hidden" name="items" value={JSON.stringify(items)} />
-                <Button onClick={()=>cleartCart()} type="submit" variant="default" className="w-full">
+                <Button onClick={()=>clearCart()} type="submit" variant="default" className="w-full">
                     Clear Cart
                 </Button>
                 <Button type="submit" variant="default" className="w-full">
