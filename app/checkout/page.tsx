@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useCartStore } from "@/store/cart-store"
+import { checkoutAction } from "./checkout-action"
 
 export default function CheckoutPage(){
     const {items, addItem, removeItem, cleartCart} = useCartStore()
@@ -43,7 +44,7 @@ export default function CheckoutPage(){
                     </div>
                 </CardContent>
             </Card>
-            <form className="max-w-md mx-auto flex flex-col gap-4">
+            <form action={checkoutAction} className="max-w-md mx-auto flex flex-col gap-4">
                 <input type="hidden" name="items" value={JSON.stringify(items)} />
                 <Button onClick={()=>cleartCart()} type="submit" variant="default" className="w-full">
                     Clear Cart
